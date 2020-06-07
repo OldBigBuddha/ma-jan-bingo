@@ -7,7 +7,7 @@ const GenerateForm = props => {
   const [isWYakuman, setWYakuman] = useState(false);
 
   return(
-    <form>
+    <form className="ml-5">
       <div className="form-group">
         <label htmlFor="coincidence">偶然役</label>
         <input type="checkbox" id="coincidence" checked={isCoincidence} onChange={e => setCoincidence(e.currentTarget.checked)}></input>
