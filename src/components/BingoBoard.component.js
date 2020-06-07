@@ -6,7 +6,7 @@ const BingoBoard = props => {
 
   return (
     <div id="board">
-      { [...Array(16).keys()].map(i => <Item value={props.bingo[i]}/>)}
+      { [...Array(16).keys()].map(i => <Item key={i} value={props.bingo[i]}/>)}
     </div>
   )
 }

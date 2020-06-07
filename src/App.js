@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
+import {BrowserRouter, Route} from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
 import BingoBoard from './components/BingoBoard.component.js';
 import GenerateForm from './components/GenerateForm.component.js';
+import Manual from "./components/Manual.component.js";
 
 import YakuList from "./yaku.json";
+import Navbar from './components/Navbar.component';
 
 // Ref: https://www.nxworld.net/tips/js-array-shuffle.html
 const shuffle = ([...array]) => {
@@ -30,13 +33,27 @@ const App = () => {
     setBingo(yakus.slice(0, 16));
   };
 
-  return (
-      <div className="container">
-        <h1>麻雀 BINGO</h1>
+  const Game = () => {
+    return (
+      <div className="d-flex">
         <BingoBoard bingo={bingo}/>
         <GenerateForm onSubmit={generateBingo} />
       </div>
+    )
+  }
+
+  return (
+      <BrowserRouter>
+        <div className="container">
+          <Navbar />
+          <main className="m-auto">
+            <Route exact path="/" component={Game}/>
+            <Route path="/manual" component={Manual}/>
+          </main>
+        </div>
+      </BrowserRouter>
     );
 }
+
 
 export default App;
