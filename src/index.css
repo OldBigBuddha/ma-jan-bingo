@@ -7,7 +7,25 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+#board {
+  display: grid;
+  width: 400px;
+  height: 400px;
+  grid-template-columns: repeat(16, 1fr);
+}
+
+.item {
+  display: table-cell;
+  font-size: 2em;
+  border: 1px dashed gray;
+  grid-column: 4 span;
+  text-align: center;
+}
+
+.item:hover {
+  cursor: pointer;
+}
+
+.done {
+  background-color: coral;
 }

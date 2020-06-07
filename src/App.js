@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+
+import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 
-function App() {
+import BingoBoard from './components/BingoBoard.component.js';
+import GenerateForm from './components/GenerateForm.component.js';
+
+import Yaku from "./yaku.json";
+
+const App = () => {
+
+  const [bingo, setBingo] = useState([...Array(16).keys()]);
+
+  const generateBingo = () => {
+    setBingo([2, 3, 5, 8, 1, 2, 8, 9, 0, 8, 5, 7, 2, 3, 6, 7]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="container">
+        <h1>麻雀 BINGO</h1>
+        <BingoBoard bingo={bingo}/>
+        <GenerateForm onSubmit={generateBingo} />
+      </div>
+    );
 }
 
 export default App;
