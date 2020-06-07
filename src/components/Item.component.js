@@ -7,7 +7,7 @@ const Item = props => {
   useEffect(() => setValue(props.value), [props.value])
 
   return (
-    <div className={"item " + (isDone ? "done" : "")} onClick={() => setDone(true)}>
+    <div className={"item " + (isDone ? "done" : "")} onClick={e => setDone(!isDone)}>
       {value}
     </div>
   )

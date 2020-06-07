@@ -6,14 +6,28 @@ import './App.css';
 import BingoBoard from './components/BingoBoard.component.js';
 import GenerateForm from './components/GenerateForm.component.js';
 
-import Yaku from "./yaku.json";
+import YakuList from "./yaku.json";
+
+// Ref: https://www.nxworld.net/tips/js-array-shuffle.html
+const shuffle = ([...array]) => {
+  for (let i = array.length - 1; i >= 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+  return array;
+}
 
 const App = () => {
 
-  const [bingo, setBingo] = useState([...Array(16).keys()]);
+  const [bingo, setBingo] = useState([...Array(16).fill("???")]);
 
-  const generateBingo = () => {
-    setBingo([2, 3, 5, 8, 1, 2, 8, 9, 0, 8, 5, 7, 2, 3, 6, 7]);
+  const generateBingo = (isCoincidence, isYakuman, isWYakuman) => {
+    let yakus = YakuList["normal"];
+    if (isCoincidence) yakus = yakus.concat(YakuList["coincidence"])
+    if (isYakuman) yakus = yakus.concat(YakuList["yakuman"])
+    if (isWYakuman) yakus = yakus.concat(YakuList["w-yakuman"])
+    yakus = shuffle(yakus)
+    setBingo(yakus.slice(0, 16));
   };
 
   return (
