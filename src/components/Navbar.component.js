@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Navbar= () => {
   return (
-    <nav className="navbar navbar-light navbar-expand-lg">
+    <nav className="navbar navbar-light navbar-expand-lg mb-5">
       <Link to="/" className="navbar-brand">麻雀役 dé BINGO</Link>
       <div className="collpase navbar-collapse">
         <ul className="navbar-nav ml-auto">

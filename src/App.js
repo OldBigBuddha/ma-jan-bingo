@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import {BrowserRouter, Route} from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-import './App.css';
 
 import BingoBoard from './components/BingoBoard.component.js';
 import GenerateForm from './components/GenerateForm.component.js';
@@ -35,9 +34,9 @@ const App = () => {
 
   const Game = () => {
     return (
-      <div className="d-flex">
-        <BingoBoard bingo={bingo}/>
+      <div className="d-flex justify-content-center">
         <GenerateForm onSubmit={generateBingo} />
+        <BingoBoard bingo={bingo}/>
       </div>
     )
   }
