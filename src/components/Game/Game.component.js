@@ -5,6 +5,7 @@ import YakuList from "../../yaku.json";
 import BingoBoard from "./BingoBoard.component.js";
 import GenerateForm from "./GenerateForm.component.js";
 import RefreshButton from "./RefreshButton.component.js";
+import ExportButton from "./ExportButton.component.js";
 
 // Ref: https://www.nxworld.net/tips/js-array-shuffle.html
 const shuffle = ([...array]) => {
@@ -63,7 +64,10 @@ export default () => {
     <div className="d-flex justify-content-center">
       <GenerateForm onSubmit={generateBingo} />
       <div>
-        <RefreshButton onClickRefresh={onClickRefresh}/>
+        <div className="d-flex">
+          <RefreshButton onClickRefresh={onClickRefresh}/>
+          <ExportButton />
+        </div>
         <BingoBoard bingo={bingo} onClickItem={onClickItem}/>
       </div>
     </div>
