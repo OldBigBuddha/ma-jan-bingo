@@ -4,6 +4,7 @@ import YakuList from "../../yaku.json";
 
 import BingoBoard from "./BingoBoard.component.js";
 import GenerateForm from "./GenerateForm.component.js";
+import RefreshButton from "./RefreshButton.component.js";
 
 // Ref: https://www.nxworld.net/tips/js-array-shuffle.html
 const shuffle = ([...array]) => {
@@ -51,10 +52,20 @@ export default () => {
     saveLocalStorage("BINGO", updatedBingo);
   }
 
+  const onClickRefresh = () => {
+    const refreshedBingo = bingo.map(bingoItem => ({...bingoItem, isDone: false}) )
+
+    setBingo(refreshedBingo);
+    saveLocalStorage("BINGO", refreshedBingo);
+  }
+
   return (
     <div className="d-flex justify-content-center">
       <GenerateForm onSubmit={generateBingo} />
-      <BingoBoard bingo={bingo} onClickItem={onClickItem}/>
+      <div>
+        <RefreshButton onClickRefresh={onClickRefresh}/>
+        <BingoBoard bingo={bingo} onClickItem={onClickItem}/>
+      </div>
     </div>
   )
 
