@@ -21,7 +21,6 @@ const saveLocalStorage = (key, data) => {
 export default () => {
 
   const savedBingo = JSON.parse(localStorage.getItem("BINGO"));
-  console.log(savedBingo);
   const dummyBingo = [...Array(16).keys()].map(() => ({ name: "???", isDone: false }));
   const [bingo, setBingo] = useState( savedBingo ? savedBingo : dummyBingo);
 
@@ -46,10 +45,10 @@ export default () => {
   };
 
   const onClickItem = index => {
-    bingo[index].isDone = !bingo[index].isDone
+    const updatedBingo =  bingo.map((bingoItem, i) => i === index ? {...bingoItem, isDone: !bingoItem.isDone} : bingoItem);
 
-    setBingo(bingo)
-    saveLocalStorage("BINGO", bingo);
+    setBingo(updatedBingo)
+    saveLocalStorage("BINGO", updatedBingo);
   }
 
   return (
