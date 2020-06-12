@@ -25,6 +25,25 @@ body {
   border: 1px dashed gray;
   grid-column: 4 span;
   text-align: center;
+  position: relative;
+}
+
+.item::before {
+  content: '✓';
+  display: inline-block;
+  color: chocolate;
+  font-size: 80px;
+  line-height: 1;
+  user-select: none;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.item:not(.done)::before {
+  opacity: 0;
 }
 
 .item:hover {
